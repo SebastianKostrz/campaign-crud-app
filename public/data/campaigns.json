@@ -1,0 +1,42 @@
+[
+  {
+    "id": "cmp-001",
+    "name": "Premium Lash Extensions",
+    "keywords": ["lashes", "extensions", "premium"],
+    "bidAmount": 25,
+    "fund": 1200,
+    "status": "on",
+    "town": "Kraków",
+    "radius": 15
+  },
+  {
+    "id": "cmp-002",
+    "name": "Natural Beauty Campaign",
+    "keywords": ["beauty", "natural", "cosmetics"],
+    "bidAmount": 18,
+    "fund": 850,
+    "status": "off",
+    "town": "Warszawa",
+    "radius": 25
+  },
+  {
+    "id": "cmp-003",
+    "name": "Volume Lashes Promo",
+    "keywords": ["lashes", "volume", "salon"],
+    "bidAmount": 30,
+    "fund": 1500,
+    "status": "on",
+    "town": "Wrocław",
+    "radius": 20
+  },
+  {
+    "id": "cmp-004",
+    "name": "Makeup Starter Campaign",
+    "keywords": ["makeup", "cosmetics", "beauty"],
+    "bidAmount": 15,
+    "fund": 600,
+    "status": "on",
+    "town": "Poznań",
+    "radius": 10
+  }
+]
