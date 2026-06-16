@@ -73,7 +73,7 @@
 .emerald-balance-amount span {
     font-size: 2rem;
     font-weight: 700;
-    color: green;
+    color: var(--color-green);
 }
 
 .emerald-balance-icon {

@@ -1,0 +1,105 @@
+.campaign-container{
+    width: 100%;
+    min-height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--border-primary);
+}
+
+.campaign-name,
+.campaign-keywords{
+    width: 15%;
+}
+
+.campaign-bid,
+.campaign-fund,
+.campaign-status,
+.campaign-town,
+.campaign-radius{
+    width: 12%;
+}
+
+.campaign-bid>span,
+.campaign-fund>span{
+    font-size: .7rem;
+    color: var(--text-secondary);
+}
+
+.campaign-col{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.campaign-status-on,
+.campaign-status-off{
+    /*width: 100%;*/
+    padding: .2rem .4rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.status-indicator{
+    height: 60%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background-color: black;
+}
+
+.campaign-status-on{
+    background-color: var(--color-green-light);
+}
+
+.campaign-status-off{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.campaign-status-on>.status-indicator{
+    background-color: var(--color-green);
+}
+
+.campaign-status-off>.status-indicator{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.campaign-btns-container{
+    height: 2.5rem;
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 1rem;
+}
+
+.campaign-btn{
+    height: 2.5rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--border-primary);
+    border-radius:10px;
+    background-color: var(--bg-color-secondary);
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+
+}
+
+.campaign-btn>img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.campaign-btn:hover{
+    background-color: var(--bg-color-main);
+}
