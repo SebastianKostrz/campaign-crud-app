@@ -1,37 +1,38 @@
 # Campaign Manager
 
-Recruitment task for Futurum Technology.
+Recruitment task for a Junior Frontend Developer position at Futurum Technology.
+
+## Live Demo
+
+https://sebastiankostrz.github.io/campaign-crud-app/
 
 ## Description
 
-Campaign Manager is a React application that allows users to manage advertising campaigns through a full CRUD workflow.
+Campaign Manager is a React application for managing advertising campaigns through a full CRUD workflow.
 
-The application enables users to:
-
-- Create new campaigns
-- View existing campaigns
-- Edit campaign details
-- Delete campaigns
-- Manage campaign status
-- Search campaigns
-- Track available Emerald account balance
+Users can create, view, edit and delete campaigns. The application also supports keyword suggestions, town selection, campaign status management and Emerald balance tracking.
 
 ## Features
 
-- React-based frontend
-- Responsive design
-- Campaign form validation
-- Keyword typeahead suggestions
-- Town selection from predefined list
-- Emerald balance management
-- Local data persistence
+* Create new campaigns
+* View campaign list
+* Edit existing campaigns
+* Delete campaigns with confirmation modal
+* Search campaigns by name
+* Manage campaign status
+* Select keywords from predefined suggestions
+* Select town from predefined list
+* Track Emerald account balance
+* Persist campaign and balance data in localStorage
+* Responsive layout for desktop, tablet and mobile screens
 
 ## Tech Stack
 
-- React
-- Vite
-- CSS
-- LocalStorage
+* React
+* Vite
+* CSS
+* localStorage
+* Mocked JSON data
 
 ## Installation
 
@@ -40,8 +41,14 @@ npm install
 npm run dev
 ```
 
+## Build
+
+```bash
+npm run build
+```
+
 ## Notes
 
-This project was created as part of a recruitment process.
+Backend functionality is mocked. Initial campaign, keyword and town data is loaded from JSON files placed in the `/public/data` directory.
 
-Backend functionality is mocked and data is stored locally in data.json file.
+After loading, campaign and balance changes are stored locally in the browser using localStorage.
