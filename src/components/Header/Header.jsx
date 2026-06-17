@@ -1,5 +1,5 @@
 import "./Header.css";
-import {useEmeraldBalance} from "../../context/CampaignContext.jsx";
+import {useEmeraldBalance} from "../../context/EmeraldBalanceContext.jsx";
 
 export default function Header() {
     const emeraldBalance = useEmeraldBalance();

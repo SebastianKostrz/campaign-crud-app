@@ -36,9 +36,25 @@
     text-align: center;
 }
 
+.campaign-keywords{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.campaign-keywords>span{
+    height: 1rem;
+    font-size: .7rem;
+    padding: .25rem;
+    background-color: var(--border-primary);
+    border-radius: 5px
+}
+
 .campaign-status-on,
 .campaign-status-off{
-    /*width: 100%;*/
     padding: .2rem .4rem;
     border-radius: 5px;
     display: flex;

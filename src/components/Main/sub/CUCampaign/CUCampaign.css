@@ -1,0 +1,156 @@
+.cu-container{
+    width: 30%;
+    background-color: var(--bg-color-secondary);
+    border: 1px solid var(--border-primary);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    align-self: flex-start;
+}
+
+.cu-container>form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.input-container>input{
+    border: 1px solid var(--border-primary);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: .5rem;
+    outline: none;
+}
+
+.input-container>label{
+    font-size: .9rem;
+    font-weight: bold;
+}
+.input-container>label>span{
+    color:red;
+}
+
+.cu-input-comment{
+    font-size: .7rem;
+    color:var(--text-secondary);
+}
+
+.cu-new-balance{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    box-sizing: border-box;
+    border: 1px solid var(--border-primary);
+    border-radius: 10px;
+    background-color: var(--color-green-lighter);
+}
+
+.keywords-input-container{
+    position: relative;
+}
+
+.keywords-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cu-new-balance strong{
+    color: var(--color-green);
+}
+
+.cu-status{
+    display: flex;
+    flex-direction: column;
+}
+
+.cu-status-btns{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+}
+
+.cu-status-button{
+    width: 50%;
+    height: 2rem;
+    border: 1px solid var(--border-primary);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    cursor: pointer;
+}
+
+.cu-btn-on{
+    border-radius: 10px 0 0 10px;
+}
+
+.cu-btn-on:hover{
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
+.cu-btn-off{
+    border-radius: 0 10px 10px 0;
+}
+
+.cu-btn-off:hover{
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.cu-status-button>div{
+    height: 40%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background-color: black;
+}
+
+.cu-status-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: all .3s ease-in-out;
+}
+
+.cu-town{
+    display: flex;
+    flex-direction: column;
+}
+
+.cu-town>select{
+    height: 2rem;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid var(--border-primary);
+}
+
+.cu-container>form>button[type="submit"]{
+    width: 100%;
+    height: 3rem;
+    background-color: var(--color-green);
+    outline: none;
+    border: 1px solid var(--border-primary);
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--bg-color-main);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cu-container>form>button[type="submit"]:hover{
+    background-color: var(--color-green-light);
+}
