@@ -22,7 +22,7 @@ export default function Header() {
                     </div>
 
                     <img
-                        src="/images/emerald-currency-icon.png"
+                        src={`${import.meta.env.BASE_URL}images/emerald-currency-icon.png`}
                         alt=""
                         loading="lazy"
                         className="emerald-balance-icon"

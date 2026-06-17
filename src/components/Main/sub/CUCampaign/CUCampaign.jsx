@@ -52,7 +52,7 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
 
     useEffect(() => {
         const fetchTowns = async () => {
-            const res = await fetch('/data/towns.json');
+            const res = await fetch(`${import.meta.env.BASE_URL}data/towns.json`)
 
             if (res.ok) {
                 const data = await res.json();
@@ -64,7 +64,7 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
         };
 
         const fetchKeywords = async () => {
-            const res = await fetch('/data/keywords.json');
+            const res = await fetch(`${import.meta.env.BASE_URL}data/keywords.json`)
 
             if (res.ok) {
                 const data = await res.json();

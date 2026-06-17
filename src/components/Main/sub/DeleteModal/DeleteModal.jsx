@@ -19,7 +19,7 @@ export default function DeleteModal({setDisplayDeleteModal, focusCampaign}) {
             </div>
             <div className="modal-content">
                 <div className='modal-content-img-wrapper'>
-                    <img src='/images/delete-icon.png' alt=""/>
+                    <img src={`${import.meta.env.BASE_URL}images/delete-icon.png`} alt=""/>
                 </div>
                 <h2>Delete campaign?</h2>
                 <span>Are you sure you want to delete this campaign?<br></br>

@@ -93,7 +93,7 @@ export default function Campaign({
                         setCurrentTab('edit');
                     }}
                 >
-                    <img src="/images/edit-icon.png" alt="Edit campaign"/>
+                    <img src={`${import.meta.env.BASE_URL}images/edit-icon.png`} alt="Edit campaign"/>
                 </button>
 
                 <button
@@ -104,7 +104,7 @@ export default function Campaign({
                         setDisplayDeleteModal(true);
                     }}
                 >
-                    <img src="/images/delete-icon.png" alt="Delete campaign"/>
+                    <img src={`${import.meta.env.BASE_URL}images/delete-icon.png`} alt="Delete campaign"/>
                 </button>
             </div>
         </div>

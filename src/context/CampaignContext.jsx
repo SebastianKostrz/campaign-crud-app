@@ -28,7 +28,7 @@ export function CampaignProvider({ children }) {
             }
         }
 
-        const res = await fetch("/data/campaigns.json");
+        const res = await fetch(`${import.meta.env.BASE_URL}data/campaigns.json`)
 
         if (res.ok) {
             const data = await res.json();
