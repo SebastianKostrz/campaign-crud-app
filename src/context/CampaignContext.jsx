@@ -1,94 +1,100 @@
-import {createContext, useContext, useEffect, useState} from "react";
-import {useEmeraldBalance} from "./EmeraldBalanceContext.jsx";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useEmeraldBalance } from "./EmeraldBalanceContext.jsx";
 
 const CampaignContext = createContext(null);
 
-export function CampaignProvider({children}) {
-    const [campaigns, setCampaigns] = useState(null);
+export function CampaignProvider({ children }) {
+    const [campaigns, setCampaigns] = useState([]);
     const emerald = useEmeraldBalance();
 
-    const fetchCampaign = async () => {
+    const saveCampaigns = (updatedCampaigns) => {
+        setCampaigns(updatedCampaigns);
+        localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
+    };
+
+    const fetchCampaigns = async () => {
         const localCampaigns = localStorage.getItem("campaigns");
-        const localCampaignsParsed=await JSON.parse(localCampaigns);
-        if(localCampaignsParsed){
-            setCampaigns(localCampaignsParsed);
-        }else{
-            const res = await fetch('/data/campaigns.json');
-            if (res.ok) {
-                const data = await res.json();
-                if (data) {
-                    setCampaigns(data);
-                    localStorage.setItem("campaigns", JSON.stringify(data));
+
+        if (localCampaigns) {
+            try {
+                const parsedCampaigns = JSON.parse(localCampaigns);
+
+                if (Array.isArray(parsedCampaigns)) {
+                    setCampaigns(parsedCampaigns);
+                    return;
                 }
-            } else {
-                console.error('Could not find any campaign data');
+            } catch (error) {
+                console.error("Could not parse local campaigns:", error);
             }
         }
-    }
+
+        const res = await fetch("/data/campaigns.json");
+
+        if (res.ok) {
+            const data = await res.json();
+
+            if (Array.isArray(data)) {
+                saveCampaigns(data);
+            }
+        } else {
+            console.error("Could not find any campaign data");
+        }
+    };
 
     useEffect(() => {
-
-        fetchCampaign();
-
-    }, [])
+        fetchCampaigns();
+    }, []);
 
     const getNewId = () => {
         if (!campaigns || campaigns.length === 0) {
             return "cmp-001";
         }
 
-        const latestCampaign = campaigns[campaigns.length - 1];
-        const latestCampaignId = latestCampaign.id;
+        const highestId = Math.max(
+            ...campaigns.map(campaign => Number(campaign.id.split("-")[1]))
+        );
 
-        const idNumber = Number(latestCampaignId.split("-")[1]);
-        const newIdNumber = idNumber + 1;
-
+        const newIdNumber = highestId + 1;
         const paddedId = newIdNumber.toString().padStart(3, "0");
 
         return `cmp-${paddedId}`;
     };
 
-    const addNewCampaign = async (campaign) => {
-        if(campaigns){
-            const updatedCampaign = [...campaigns,campaign];
-            localStorage.setItem("campaigns", JSON.stringify(updatedCampaign));
-            fetchCampaign()
-        }
-    }
+    const addNewCampaign = (campaign) => {
+        const updatedCampaigns = [...campaigns, campaign];
 
-    const editCampaign = async (id,campaign) => {
-        if(campaigns){
-            const updatedCampaigns = campaigns.map(camp=>{
-               return camp.id===id ? {...campaign,id:id}: camp;
-            })
-            setCampaigns(updatedCampaigns);
-            localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
-        }
-    }
+        saveCampaigns(updatedCampaigns);
+    };
+
+    const editCampaign = (id, updatedCampaign) => {
+        const updatedCampaigns = campaigns.map(campaign => {
+            return campaign.id === id
+                ? { ...updatedCampaign, id }
+                : campaign;
+        });
+
+        saveCampaigns(updatedCampaigns);
+    };
 
     const deleteCampaign = (id) => {
-        if (!campaigns) return;
-
-        const campaignToDelete = campaigns.find(camp => camp.id === id);
+        const campaignToDelete = campaigns.find(campaign => campaign.id === id);
 
         if (!campaignToDelete) return;
 
-        const updatedCampaigns = campaigns.filter(camp => camp.id !== id);
+        const updatedCampaigns = campaigns.filter(campaign => campaign.id !== id);
 
-        emerald.addEmeraldBalance(campaignToDelete.fund);
+        emerald.addEmeraldBalance(Number(campaignToDelete.fund));
 
-        localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
-        setCampaigns(updatedCampaigns);
+        saveCampaigns(updatedCampaigns);
     };
 
     const value = {
+        campaigns,
         getNewId,
         addNewCampaign,
-        campaigns,
         editCampaign,
-        deleteCampaign
+        deleteCampaign,
     };
-
 
     return (
         <CampaignContext.Provider value={value}>

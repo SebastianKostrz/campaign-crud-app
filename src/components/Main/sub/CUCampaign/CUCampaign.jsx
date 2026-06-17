@@ -15,11 +15,11 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
         id: "",
         name: "",
         keywords: [],
-        bidAmount: 0,
-        fund: 0,
+        bidAmount: "",
+        fund: "",
         status: "on",
         town: "",
-        radius: 0,
+        radius: "",
     });
 
     const [keywords, setKeywords] = useState([]);
@@ -89,19 +89,23 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
 
         setAreKeywordsFilled(null);
 
+        const preparedCampaign = {
+            ...newCampaign,
+            fund: Number(newCampaign.fund),
+            bidAmount: Number(newCampaign.bidAmount),
+            radius: Number(newCampaign.radius),
+        };
+
         if (type === "add") {
             const newId = campaign.getNewId();
 
             if (newId !== "") {
                 await campaign.addNewCampaign({
-                    ...newCampaign,
+                    ...preparedCampaign,
                     id: newId,
-                    fund: Number(newCampaign.fund),
-                    bidAmount: Number(newCampaign.bidAmount),
-                    radius: Number(newCampaign.radius),
                 });
 
-                emerald.subtractEmeraldBalance(newCampaign.fund);
+                emerald.subtractEmeraldBalance(preparedCampaign.fund);
 
                 setCurrentTab(null);
                 setFocusCampaign(null);
@@ -112,14 +116,11 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
             const previousFund = oldCampaignFund;
 
             await campaign.editCampaign(focusCampaign, {
-                ...newCampaign,
+                ...preparedCampaign,
                 id: focusCampaign,
-                fund: Number(newCampaign.fund),
-                bidAmount: Number(newCampaign.bidAmount),
-                radius: Number(newCampaign.radius),
             });
 
-            const fundDifference = Number(newCampaign.fund) - previousFund;
+            const fundDifference = preparedCampaign.fund - previousFund;
 
             if (fundDifference > 0) {
                 emerald.subtractEmeraldBalance(fundDifference);
@@ -165,6 +166,23 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
             setNewCampaign(prev => ({ ...prev, bidAmount: 1 }));
         } else {
             setNewCampaign(prev => ({ ...prev, bidAmount: numericValue }));
+        }
+    };
+
+    const manageRadius = (e) => {
+        const value = e.target.value;
+
+        if (value === "") {
+            setNewCampaign(prev => ({ ...prev, radius: "" }));
+            return;
+        }
+
+        const numericValue = Number(value);
+
+        if (numericValue <= 0) {
+            setNewCampaign(prev => ({ ...prev, radius: 1 }));
+        } else {
+            setNewCampaign(prev => ({ ...prev, radius: numericValue }));
         }
     };
 
@@ -232,6 +250,8 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
                         name="cu-bid"
                         placeholder="Enter bid amount"
                         required
+                        min="1"
+                        step="0.01"
                         value={newCampaign.bidAmount}
                         onChange={manageMinBid}
                     />
@@ -248,6 +268,9 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
                         name="cu-fund"
                         placeholder="Enter amount"
                         required
+                        min="1"
+                        max={availableBalance}
+                        step="0.01"
                         value={newCampaign.fund}
                         onChange={manageCampaignFund}
                     />
@@ -322,8 +345,10 @@ export default function CUCampaign({ type, focusCampaign, setFocusCampaign, setC
                         name="cu-radius"
                         placeholder="Enter radius in kilometers"
                         required
+                        min="1"
+                        step="1"
                         value={newCampaign.radius}
-                        onChange={(e) => setNewCampaign({ ...newCampaign, radius: e.target.value })}
+                        onChange={manageRadius}
                     />
                 </div>
 

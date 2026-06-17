@@ -50,14 +50,10 @@ export default function Campaign({campaign,setCurrentTab,setFocusCampaign,
             <button className='remove-campaign-btn campaign-btn'
                     onClick={()=>{
                         setFocusCampaign(campaign.id)
-                        setCurrentTab('delete')
+                        setDisplayDeleteModal(true)
                     }}
             >
-                <img src='/images/delete-icon.png' alt="delete icon"
-                     onClick={()=>{
-                         setFocusCampaign(campaign.id)
-                         setDisplayDeleteModal(true)
-                     }}/>
+                <img src='/images/delete-icon.png' alt="delete icon"/>
             </button>
         </div>
     </div>;
