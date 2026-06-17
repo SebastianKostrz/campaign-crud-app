@@ -133,12 +133,44 @@
 }
 
 @media (max-width: 768px) {
-    .campaigns-container,
-    .app-main.form-open .campaigns-container {
-        width: 98%;
+    .app-main,
+    .app-main.form-open {
+        width: 100%;
+        padding: 1rem 0;
+        gap: 1rem;
     }
 
-    .campaigns-label {
-        text-align: center;
+    .campaigns-container,
+    .app-main.form-open .campaigns-container {
+        width: 96%;
+        padding: .75rem;
+        border-radius: 14px;
+    }
+
+    .campaigns-container-nav {
+        flex-direction: column;
+        gap: .75rem;
+    }
+
+    .campaigns-search-input {
+        width: 100%;
+        min-height: 2.5rem;
+        box-sizing: border-box;
+        font-size: .9rem;
+    }
+
+    .add-campaigns-btn {
+        width: 100%;
+        min-height: 2.5rem;
+        box-sizing: border-box;
+        font-size: .9rem;
+    }
+
+    .add-campaigns-btn > span {
+        font-size: 1.25rem;
+    }
+
+    .campaigns-labels {
+        display: none;
     }
 }

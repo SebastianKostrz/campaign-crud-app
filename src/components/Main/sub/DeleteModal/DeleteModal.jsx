@@ -4,10 +4,6 @@ import {useCampaignContext} from "../../../../context/CampaignContext.jsx";
 export default function DeleteModal({setDisplayDeleteModal, focusCampaign}) {
     const campaign=useCampaignContext();
 
-
-
-
-
     return <div className="modal-overlay"
     onClick={(e) => {
 

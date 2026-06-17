@@ -8,7 +8,8 @@ export default function KeywordsDropdown({keywords,keywordsQuery,
 
     useEffect(() => {
         const filteredKeywordsTemp = keywords
-            .filter(keyword => keyword.includes(keywordsQuery.toLowerCase()))
+            .filter(keyword =>
+                keyword.toLowerCase().includes(keywordsQuery.toLowerCase()))
             .filter(keyword => !newCampaign.keywords.includes(keyword));
         setFilteredKeywords(filteredKeywordsTemp);
     },[keywordsQuery,keywords,newCampaign.keywords]);

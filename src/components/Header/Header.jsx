@@ -17,8 +17,8 @@ export default function Header() {
                         <strong className="emerald-balance-label">Emerald balance</strong>
 
                         <span className="emerald-balance-amount">
-              <span>{emeraldBalance.parseEmeraldToString()}</span> EMD
-            </span>
+                             <span>{emeraldBalance.parseEmeraldToString()}</span> EMD
+                        </span>
                     </div>
 
                     <img

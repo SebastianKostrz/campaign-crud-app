@@ -1,4 +1,4 @@
-.campaign-container{
+.campaign-container {
     width: 100%;
     min-height: 5rem;
     display: flex;
@@ -6,10 +6,12 @@
     align-items: center;
     border-radius: 10px;
     border: 1px solid var(--border-primary);
+    background-color: var(--bg-color-secondary);
+    box-sizing: border-box;
 }
 
 .campaign-name,
-.campaign-keywords{
+.campaign-keywords {
     width: 15%;
 }
 
@@ -17,17 +19,11 @@
 .campaign-fund,
 .campaign-status,
 .campaign-town,
-.campaign-radius{
+.campaign-radius {
     width: 12%;
 }
 
-.campaign-bid>span,
-.campaign-fund>span{
-    font-size: .7rem;
-    color: var(--text-secondary);
-}
-
-.campaign-col{
+.campaign-col {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -36,25 +32,51 @@
     text-align: center;
 }
 
-.campaign-keywords{
+.campaign-mobile-label {
+    display: none;
+}
+
+.campaign-value {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campaign-title {
+    color: var(--text-primary);
+}
+
+.campaign-bid .campaign-value,
+.campaign-fund .campaign-value {
+    flex-direction: column;
+}
+
+.campaign-currency {
+    font-size: .7rem;
+    color: var(--text-secondary);
+}
+
+.campaign-keywords-list {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: .25rem;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     align-content: center;
 }
 
-.campaign-keywords>span{
-    height: 1rem;
+.campaign-keywords-list > span {
+    min-height: 1rem;
     font-size: .7rem;
     padding: .25rem;
     background-color: var(--border-primary);
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .campaign-status-on,
-.campaign-status-off{
+.campaign-status-off {
     padding: .2rem .4rem;
     border-radius: 5px;
     display: flex;
@@ -64,30 +86,30 @@
     gap: .5rem;
 }
 
-.status-indicator{
-    height: 60%;
-    aspect-ratio: 1;
+.status-indicator {
+    width: .5rem;
+    height: .5rem;
     border-radius: 9999px;
     background-color: black;
 }
 
-.campaign-status-on{
+.campaign-status-on {
     background-color: var(--color-green-light);
 }
 
-.campaign-status-off{
+.campaign-status-off {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.campaign-status-on>.status-indicator{
+.campaign-status-on > .status-indicator {
     background-color: var(--color-green);
 }
 
-.campaign-status-off>.status-indicator{
+.campaign-status-off > .status-indicator {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.campaign-btns-container{
+.campaign-btns-container {
     height: 2.5rem;
     width: 10%;
     display: flex;
@@ -99,49 +121,159 @@
     gap: 1rem;
 }
 
-.campaign-btn{
+.campaign-btn {
     height: 2.5rem;
     aspect-ratio: 1;
     border: 1px solid var(--border-primary);
-    border-radius:10px;
+    border-radius: 10px;
     background-color: var(--bg-color-secondary);
     cursor: pointer;
     transition: background-color .3s ease-in-out;
-
 }
 
-.campaign-btn>img{
+.campaign-btn > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.campaign-btn:hover{
+.campaign-btn:hover {
     background-color: var(--bg-color-main);
 }
 
-@media (max-width:1440px) {
-    .campaign-btn{
+@media (max-width: 1440px) {
+    .campaign-btn {
         height: 1.75rem;
     }
 
     .campaign-status-on,
-    .campaign-status-off{
+    .campaign-status-off {
         padding: .2rem 1rem;
     }
 
-    .keyword-container{
+    .keyword-container {
         margin: .25rem;
     }
 }
 
-@media (max-width:768px) {
-    .campaign-container>*{
-        font-size: 14px;
-        min-height: 7rem;
+@media (max-width: 768px) {
+    .campaigns-labels {
+        display: none;
     }
 
-    .campaign-btns-container{
+    .campaign-container {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-height: auto;
+        gap: .75rem;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .campaign-container > * {
+        font-size: 14px;
+    }
+
+    .campaign-col {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: .45rem 0;
+        border-bottom: 1px solid var(--border-primary);
+        box-sizing: border-box;
+    }
+
+    .campaign-mobile-label {
+        display: inline-flex;
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: .85rem;
+    }
+
+    .campaign-value {
+        font-weight: 600;
+        color: var(--text-primary);
+        flex-direction: row;
         gap: .25rem;
+    }
+
+    .campaign-name {
+        border-bottom: none;
+        padding: 0;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .campaign-title {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .campaign-keywords {
+        border-bottom: none;
+        padding: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: .35rem;
+    }
+
+    .campaign-keywords .campaign-mobile-label {
+        display: none;
+    }
+
+    .campaign-keywords-list {
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: .35rem;
+    }
+
+    .campaign-keywords-list > span {
+        height: auto;
+        padding: .25rem .5rem;
+        font-size: .75rem;
+        background-color: var(--color-green-lighter);
+        color: var(--color-green);
+        font-weight: 600;
+    }
+
+    .campaign-bid .campaign-value,
+    .campaign-fund .campaign-value {
+        flex-direction: row;
+    }
+
+    .campaign-currency {
+        font-size: .8rem;
+        color: var(--text-secondary);
+    }
+
+    .campaign-radius {
+        border-bottom: none;
+    }
+
+    .campaign-status-on,
+    .campaign-status-off {
+        padding: .25rem .7rem;
+        font-size: .85rem;
+    }
+
+    .campaign-btns-container {
+        width: 100%;
+        height: auto;
+        justify-content: flex-end;
+        gap: .5rem;
+        padding-right: 0;
+        margin-top: .25rem;
+    }
+
+    .campaign-btn {
+        width: 2.25rem;
+        height: 2.25rem;
     }
 }
