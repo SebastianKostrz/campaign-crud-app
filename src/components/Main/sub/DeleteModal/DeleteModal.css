@@ -122,3 +122,10 @@
     background-color: red;
     color: white;
 }
+
+@media (max-width: 1440px) {
+    .modal-container{
+        width: 60%;
+        height: 60%;
+    }
+}

@@ -82,3 +82,21 @@
     aspect-ratio: 1;
     object-fit: contain;
 }
+
+@media(max-width: 1440px) {
+    .app-header-left {
+        width: 50%;
+    }
+
+    .app-header-right {
+        width: 50%;
+    }
+}
+
+@media(max-width: 768px) {
+    .emerald-balance-icon{
+        height: 40%;
+        max-height: 40px;
+
+    }
+}

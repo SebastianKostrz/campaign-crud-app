@@ -4,7 +4,6 @@ import {useEmeraldBalance} from "../../context/EmeraldBalanceContext.jsx";
 export default function Header() {
     const emeraldBalance = useEmeraldBalance();
 
-
     return (
         <header className="app-header">
             <div className="app-header-left">

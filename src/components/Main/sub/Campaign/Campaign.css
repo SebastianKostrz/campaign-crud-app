@@ -119,3 +119,29 @@
 .campaign-btn:hover{
     background-color: var(--bg-color-main);
 }
+
+@media (max-width:1440px) {
+    .campaign-btn{
+        height: 1.75rem;
+    }
+
+    .campaign-status-on,
+    .campaign-status-off{
+        padding: .2rem 1rem;
+    }
+
+    .keyword-container{
+        margin: .25rem;
+    }
+}
+
+@media (max-width:768px) {
+    .campaign-container>*{
+        font-size: 14px;
+        min-height: 7rem;
+    }
+
+    .campaign-btns-container{
+        gap: .25rem;
+    }
+}

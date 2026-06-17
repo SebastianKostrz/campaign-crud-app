@@ -3,7 +3,7 @@ import { useState } from "react";
 import Campaign from "./sub/Campaign/Campaign.jsx";
 import CUCampaign from "./sub/CUCampaign/CUCampaign.jsx";
 import { useCampaignContext } from "../../context/CampaignContext.jsx";
-import DeleteModal from "./sub/Modal/DeleteModal.jsx";
+import DeleteModal from "./sub/DeleteModal/DeleteModal.jsx";
 
 export default function Main() {
     const campaigns = useCampaignContext();
@@ -13,6 +13,7 @@ export default function Main() {
     const [focusCampaign, setFocusCampaign] = useState(null);
     const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
 
+    const isFormOpen = currentTab === "add" || currentTab === "edit";
     const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
     const campaignsToDisplay = (campaigns.campaigns || []).filter(campaign => {
@@ -22,22 +23,8 @@ export default function Main() {
     });
 
     return (
-        <main
-            className="app-main"
-            style={{
-                justifyContent: currentTab === 'add' || currentTab === 'edit'
-                    ? 'space-between'
-                    : 'center'
-            }}
-        >
-            <div
-                className="campaigns-container"
-                style={{
-                    width: currentTab === 'add' || currentTab === 'edit'
-                        ? '60%'
-                        : '90%'
-                }}
-            >
+        <main className={`app-main ${isFormOpen ? "form-open" : ""}`}>
+            <div className="campaigns-container">
                 <div className="campaigns-container-nav">
                     <input
                         type="text"
@@ -49,7 +36,7 @@ export default function Main() {
 
                     <button
                         className="add-campaigns-btn"
-                        onClick={() => setCurrentTab('add')}
+                        onClick={() => setCurrentTab("add")}
                     >
                         <span>+</span> Add campaigns
                     </button>

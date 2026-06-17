@@ -1,23 +1,30 @@
-html,body,#root,.App{
+html,
+body,
+#root {
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 body {
     font-family: "Inter", system-ui, sans-serif;
     background: var(--bg-color-main);
-
+    overflow-x: hidden;
 }
 
-:root{
-    --bg-color-main:#F7F8FD;
-    --bg-color-secondary:#ffffff;
-    --bg-color-accent:#F8F9FD;
+.App {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+:root {
+    --bg-color-main: #F7F8FD;
+    --bg-color-secondary: #ffffff;
+    --bg-color-accent: #F8F9FD;
     --text-primary: #111827;
     --text-secondary: #4b5563;
     --border-primary: #e3e3e3;
